@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+        <title>Produto</title>
+</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>    /* Bloco de estilos CSS */
+    body {
+      font-family: Calibri, sans-serif; /* Fonte para o texto do corpo da página */
+      background-color: #3684c6; /* Cor de fundo da página */
+      color: #131313; /* Cor do texto */
+      padding-top: 25px; /* Preenchimento para espaçar os elementos do corpo */
+    }
+    h3 {
+      background-color: #230980; /* Cor de fundo para títulos h3 */
+      color: #ffffff; /* Cor do texto dos títulos h3 */
+      padding: 10px; /* Preenchimento para espaçar os títulos h3 */
+      border-right: 10px; /* Bordas retas para destacar os títulos h3 */
+    }
+    p {
+      background-color: #f9f9f9; /* Cor de fundo para parágrafos */
+      padding: 5px; /* Preenchimento para espaçar os parágrafos */
+      border: 1px solid #ccc; /* Borda para destacar os parágrafos */
+      border-right: 5px; /* Bordas retas */
+    }
+    .pagination {
+      text-align: center; /* Centralizar os links de página */
+    }
+    .step-links a {
+      padding: 5px 10px; /* Preenchimento para espaçar os links de página */
+      background-color: #230980; /* Cor de fundo para os links de página */
+      color: #ffffff; /* Cor do texto dos links de página */
+      margin: 5px; /* Margem para espaçar os links de página */
+      border-right: 5px; /* Bordas retas para os links de página */
+      text-decoration: none; /* Remover sublinhado padrão dos links */
+    }
+    .step-links a:hover {
+      background-color: #0077aa; /* Alteração de cor de fundo ao passar o mouse sobre os links */
+    }
+    .current-page {
+      font-weight: bold; /* Destacar o número da página atual */
+      background-color: #230980; /* Cor de fundo para a página atual */
+      color: #fff; /* Cor do texto da página atual */
+      padding: 5px 10px; /* Preenchimento para espaçar a página atual */
+      border-right: 5px; /* Bordas retas para a página atual */
+    }
+  </style>
+
+<body>
+  <!-- Exibir informações do produto -->
+  {% for produto in page_obj %}
+    <h3> Produto </h3>
+    <p> Descricao do Produto </p>
+  {% endfor %}
+
+  <!-- Renderizar os links de página -->
+  <div class="pagination">
+    <span class="step-links">
+      {% if page_obj.has_previous %}
+        <a href="?page=1">&laquo; 1 </a>
+        <a href="?page={{ page_obj.previous_page_number }}">2</a>
+      {% endif %}
+      <span class="current-page">...</span>
+      {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">9</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}">10 &raquo;</a>
+      {% endif %}
+    </span>
+  </div>
+
+
+  <div class="content">
+    <h1> Título </h1>
+    <p> Exercício Pensar e Responder.</p>
+  </div>
+</body>
+</html>
